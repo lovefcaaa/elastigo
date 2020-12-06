@@ -111,7 +111,7 @@ func (r *Request) DoResponse(v interface{}) (*http.Response, []byte, error) {
 	if client == nil {
 		client = http.DefaultClient
 	}
-
+        r.Header.Add("Content-Type", "application/json")
 	res, err := client.Do(r.Request)
 	// Inform the HostPool of what happened to the request and allow it to update
 	r.hostResponse.Mark(err)
